@@ -1,0 +1,16 @@
+{
+	"name": "dir",
+	"version": "1.0.0",
+	"description": "",
+	"keywords": [],
+	"license": "ISC",
+	"author": "",
+	"main": "index.js",
+	"scripts": {
+		"directus": "directus start"
+	},
+	"dependencies": {
+		"directus": "^9.16.1",
+		"sqlite3": "^5.0.11"
+	}
+}
