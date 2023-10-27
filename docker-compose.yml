@@ -2,12 +2,12 @@ version: '3'
 services:
 
   database:
-    image: postgis/postgis:16-3.4-alpine
+    image: postgis/postgis:13-3.4-alpine
     volumes:
       - synth_database:/var/lib/postgresql/data
   
   cache:
-    image: redis:7.2.2-alpine
+    image: redis:6-alpine
 
   directus:
     image: directus/directus:10.7.0
