@@ -1,7 +1,7 @@
 version: '3'
 services:
   directus:
-    image: directus/directus:10.7.0
+    image: directus/directus:latest
     ports:
       - 8055:8055
     volumes:
@@ -12,15 +12,14 @@ services:
       - database
 
   database:
-    image: postgis/postgis:13-master
-    # Required when running on platform other than amd64, like Apple M1/M2:
-    # platform: linux/amd64
+    image: postgres:latest
+    restart: always
     volumes:
       - ./data/database:/var/lib/postgresql/data
     ports:
       - 5432:5432
   
   cache:
-    image: redis:6
+    image: redis:latest
     ports:
       - 6379:6379
