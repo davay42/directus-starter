@@ -8,6 +8,11 @@ services:
       - ./database:/directus/database
       - ./uploads:/directus/uploads
       - ./extensions:/directus/extensions
+    depends_on:
+      db:
+        condition: service_started
+      redis:
+        condition: service_started
     environment:
       KEY: "my-1241-very-#$*%@#-secret-KEY"
       SECRET: "e7&*#ve#n*#mo#$#re-SAFE-SECRET"
