@@ -10,39 +10,17 @@ services:
     depends_on:
       - cache
       - database
-    environment:
-      KEY: "my-1241-very-#$*%@#-secret-KEY"
-      SECRET: "e7&*#ve#n*#mo#$#re-SAFE-SECRET"
-      
-      PUBLIC_URL: 'https://directus.defucc.me'
-      ADMIN_EMAIL: "admin@example.com"
-      ADMIN_PASSWORD: "directus"
-      
-      DB_CLIENT: "pg"
-      DB_HOST: "database"
-      DB_PORT: "5432"
-      DB_DATABASE: "directus"
-      DB_USER: "directus"
-      DB_PASSWORD: "directus"
-      
-      
-      CACHE_ENABLED: "true"
-      CACHE_STORE: "redis"
-      CACHE_REDIS: "redis://cache:6379"
-      
-      RATE_LIMITER_ENABLED: "true"
-      RATE_LIMITER_STORE: "redis"
-      RATE_LIMITER_POINTS: 25
-      RATE_LIMITER_DURATION: 1
+
   database:
     image: postgis/postgis:13-master
     # Required when running on platform other than amd64, like Apple M1/M2:
     # platform: linux/amd64
     volumes:
       - ./data/database:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: 'directus'
-      POSTGRES_PASSWORD: 'directus'
-      POSTGRES_DB: 'directus'
+    ports:
+      - 5432:5432
+  
   cache:
     image: redis:6
+    ports:
+      - 6379:6379
