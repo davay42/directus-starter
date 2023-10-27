@@ -20,6 +20,6 @@ services:
       - 5100:5100
   
   cache:
-    image: redis:7.2.2
+    image: redis:7.2.2-alpine
     ports:
       - 6379:6379
