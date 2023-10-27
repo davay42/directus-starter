@@ -5,8 +5,8 @@ services:
     ports:
       - 8055:8055
     volumes:
-      - ./uploads:/directus/uploads
-      - ./extensions:/directus/extensions
+      - uploads:/directus/uploads
+      - extensions:/directus/extensions
     depends_on:
       - cache
       - database
@@ -15,7 +15,7 @@ services:
     image: postgres:latest
     restart: always
     volumes:
-      - ./data/database:/var/lib/postgresql/data
+      - database:/var/lib/postgresql/data
     ports:
       - 5432:5432
   
