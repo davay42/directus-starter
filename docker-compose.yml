@@ -1,25 +1,25 @@
 version: '3'
 services:
   directus:
-    image: directus/directus:latest
+    image: directus/directus:10.7.0
     ports:
       - 8055:8055
     volumes:
-      - uploads:/directus/uploads
-      - extensions:/directus/extensions
+      - synth_uploads:/directus/uploads
+      - synth_extensions:/directus/extensions
     depends_on:
       - cache
       - database
 
   database:
-    image: postgres:latest
+    image: postgis/postgis:13-3.1-alpine
     restart: always
     volumes:
-      - database:/var/lib/postgresql/data
+      - synth_database:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5100:5432
   
   cache:
-    image: redis:latest
+    image: redis:7.2.2
     ports:
       - 6379:6379
