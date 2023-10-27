@@ -17,7 +17,7 @@ services:
     volumes:
       - synth_database:/var/lib/postgresql/data
     ports:
-      - 5100:5432
+      - 5100:5100
   
   cache:
     image: redis:7.2.2
