@@ -1,9 +1,16 @@
 version: '3'
 services:
+
+  database:
+    image: postgis/postgis:16-3.4-alpine
+    volumes:
+      - synth_database:/var/lib/postgresql/data
+  
+  cache:
+    image: redis:7.2.2-alpine
+
   directus:
     image: directus/directus:10.7.0
-    ports:
-      - 8055:8055
     volumes:
       - synth_uploads:/directus/uploads
       - synth_extensions:/directus/extensions
@@ -11,15 +18,5 @@ services:
       - cache
       - database
 
-  database:
-    image: postgis/postgis:16-3.4-alpine
-    restart: always
-    volumes:
-      - synth_database:/var/lib/postgresql/data
-    ports:
-      - 5100:5100
-  
-  cache:
-    image: redis:7.2.2-alpine
-    ports:
-      - 6379:6379
+
+
