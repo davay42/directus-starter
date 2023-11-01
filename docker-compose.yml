@@ -4,7 +4,7 @@ services:
   database:
     image: postgis/postgis:13-3.4-alpine
     volumes:
-      - synth_database:/var/lib/postgresql/data
+      - _database:/var/lib/postgresql/data
   
   cache:
     image: redis:6-alpine
@@ -12,8 +12,8 @@ services:
   directus:
     image: directus/directus:10.7.0
     volumes:
-      - /directus/uploads
-      - /directus/extensions
+      - _uploads:/directus/uploads
+      - _extensions:/directus/extensions
     depends_on:
       - cache
       - database
