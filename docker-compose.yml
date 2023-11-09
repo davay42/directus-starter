@@ -10,7 +10,7 @@ services:
     image: redis:6-alpine
 
   directus:
-    image: directus/directus:10.7.0
+    image: directus/directus:10.7.2
     volumes:
       - _uploads:/directus/uploads
       - _extensions:/directus/extensions
