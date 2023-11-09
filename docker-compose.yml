@@ -12,8 +12,8 @@ services:
   directus:
     image: directus/directus:10.7.2
     volumes:
-      - _uploads:/directus/uploads
-      - _extensions:/directus/extensions
+      - synth_uploads:/directus/uploads
+      - sytnh_extensions:/directus/extensions
     depends_on:
       - cache
       - database
